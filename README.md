@@ -1,6 +1,17 @@
+A small & personalized valentine's day card for my bestie :)
+
+Made with Next.js and Tailwind CSS, and paired with Codex.
+
+<img width="423" height="293" alt="Screenshot 2026-02-11 at 11 59 35 PM" src="https://github.com/user-attachments/assets/68bfe265-3d38-4681-b183-e9a9248a853b" />
+
+<img width="729" height="602" alt="Screenshot 2026-02-11 at 11 59 49 PM" src="https://github.com/user-attachments/assets/221acb77-c44a-45bf-991d-103c89a6014b" />
+
+
+-----------------------
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-## Getting Started
+## To run/test locally
 
 First, run the development server:
 
