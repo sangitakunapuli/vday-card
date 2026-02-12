@@ -14,6 +14,8 @@ interface DraggableItem {
 
 export default function Home() {
   const [isOpen, setIsOpen] = useState(false);
+  const [noteClicked, setIsNoteClicked] = useState(false);
+
   const [items, setItems] = useState<DraggableItem[]>([
     {
       id: '1',
@@ -97,28 +99,44 @@ export default function Home() {
     <div className="flex min-h-screen items-center justify-center bg-gradient-to-br from-pink-100 via-red-50 to-pink-100 p-4">
       <div className="w-full max-w-4xl">
         <div className="mb-8 text-center">
-          <h1 className="mb-2 text-4xl font-bold text-red-600">Happy Valentine's Day!</h1>
-          <p className="text-lg text-pink-700">Open the envelope and drag out the love</p>
+          {!isOpen && <h1 className="mb-2 text-4xl font-bold text-red-600">To a special yookies bear...</h1>}
+          {/* {!isOpen && <p className="text-lg text-pink-700">Click to open!</p>} */}
         </div>
 
-        {!isOpen ? (
+        {!noteClicked ? (
           <div className="flex items-center justify-center">
             <div
               onClick={() => setIsOpen(true)}
-              className={`group relative h-64 w-96 cursor-pointer ${styles.envelopeContainer}`}
+              className={`group relative h-64 w-96 cursor-pointer ${styles.envelopeContainer} ${isOpen ? styles.opened : ''}`}
             >
               {/* Envelope body */}
-              <div className="absolute inset-0 rounded-lg bg-white shadow-lg transition-transform duration-500 group-hover:scale-105">
+              <div className={`absolute inset-0 rounded-lg shadow-lg transition-transform duration-500 group-hover:scale-105 ${styles.envelopeBody}`}>
                 {/* Envelope details */}
                 <div className="absolute inset-0 flex items-center justify-center">
-
+                  <div
+                    className={`${styles.flapTriangle} ${isOpen ? styles.open : styles.closed} group-hover:scale-100`}
+                  ></div>
                 </div>
               </div>
 
+              {/* Sticker seal */}
+              {!isOpen && <div className={styles.envelopeSticker}>💌</div>}
+
+              {/* Paper slip coming out */}
+              <div 
+                className={styles.paperSlip}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setIsNoteClicked(true);
+                }}
+              >
+                <p className="text-sm font-semibold text-center text-gray-700">
+                  Click to reveal your surprises!
+                </p>
+              </div>
+      
               {/* Triangular flap */}
-              <div
-                className={`${styles.flapTriangle} ${isOpen ? styles.open : styles.closed}`}
-              ></div>
+             
             </div>
           </div>
         ) : (
